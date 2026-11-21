@@ -52,41 +52,79 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <img src={SITE_IMAGES.hero} alt="Lavender rose bouquet with chocolates and a teddy bear" className="absolute inset-0 h-full w-full object-cover object-right" />
-        <div className="absolute inset-0 bg-veil" />
-        <div className="container-page relative flex min-h-[78vh] items-center py-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
-            <p className="eyebrow mb-5">Flowers · Chocolates · Cuddles</p>
-            <h1 className="text-5xl leading-[0.98] text-plum md:text-7xl">
-              Gifts that feel like a <em className="text-primary">daydream.</em>
-            </h1>
-            <p className="mt-6 max-w-md text-lg text-foreground/75">
-              Hand-tied bouquets, chocolate blooms and keepsakes wrapped in lavender — every gift from ₹99 to ₹499.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="lg">
-                <Link to="/shop">
-                  Shop all gifts <ArrowRight />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="bg-card/70 backdrop-blur">
-                <Link to="/build-a-box">Build a gift box</Link>
-              </Button>
-            </div>
-            <div className="mt-12 flex gap-10 text-sm">
-              <div>
-                <p className="font-display text-3xl text-plum">4.9★</p>
-                <p className="text-muted-foreground">12k+ happy gifters</p>
-              </div>
-              <div>
-                <p className="font-display text-3xl text-plum">2 PM</p>
-                <p className="text-muted-foreground">Same-day cut-off</p>
-              </div>
-            </div>
-          </motion.div>
+      
+{/* Hero */}
+<section className="relative isolate min-h-[78vh] overflow-hidden">
+
+  {/* Background image stays behind everything */}
+  <img
+    src={SITE_IMAGES.hero}
+    alt="Lavender gift bouquet"
+    className="absolute inset-0 h-full w-full object-cover object-right"
+  />
+
+  {/* Desktop overlay */}
+  <div className="absolute inset-0 hidden bg-veil md:block" />
+
+  {/* Mobile lavender blending overlay */}
+  <div className="absolute inset-0 md:hidden bg-[linear-gradient(90deg,rgba(248,240,252,0.97)_0%,rgba(248,240,252,0.91)_32%,rgba(248,240,252,0.76)_58%,rgba(248,240,252,0.42)_100%)]" />
+
+  {/* Extra bottom contrast */}
+  <div className="absolute inset-0 md:hidden bg-[linear-gradient(0deg,rgba(48,27,62,0.18)_0%,transparent_38%)]" />
+
+  {/* Content */}
+  <div className="container-page relative z-10 flex min-h-[78vh] items-center py-12 md:py-20">
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="w-full max-w-xl"
+    >
+      <p className="eyebrow mb-4 md:mb-5">
+        Flowers · Chocolates · Cuddles
+      </p>
+
+      <h1 className="max-w-[340px] text-[2.8rem] leading-[1.02] tracking-tight text-plum sm:max-w-xl sm:text-5xl md:text-7xl">
+        Gifts that feel like a{" "}
+        <em className="text-primary">daydream.</em>
+      </h1>
+
+      <p className="mt-5 max-w-md text-base leading-relaxed text-plum/85 md:mt-6 md:text-lg">
+        Hand-tied bouquets, chocolate blooms and keepsakes
+        wrapped in lavender — every gift from ₹99 to ₹499.
+      </p>
+
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row md:mt-9">
+        <Button asChild variant="hero" size="lg">
+          <Link to="/shop">
+            Shop all gifts <ArrowRight />
+          </Link>
+        </Button>
+
+        <Button
+          asChild
+          variant="outline"
+          size="lg"
+          className="bg-white/75 backdrop-blur-md"
+        >
+          <Link to="/build-a-box">Build a gift box</Link>
+        </Button>
+      </div>
+
+      <div className="mt-9 flex gap-8 text-sm md:mt-12 md:gap-10">
+        <div>
+          <p className="font-display text-3xl text-plum">4.9★</p>
+          <p className="text-plum/70">12k+ happy gifters</p>
         </div>
-      </section>
+        <div>
+          <p className="font-display text-3xl text-plum">2 PM</p>
+          <p className="text-plum/70">Same-day cut-off</p>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Occasions */}
       <section className="border-b border-border bg-card">
