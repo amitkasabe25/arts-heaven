@@ -15,10 +15,17 @@ dist-ssr
 .tanstack/**
 .nitro
 *.local
+.env
+.env.*
+!.env.example
 
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Local development uploads (never commit user-uploaded files)
+apps/api/uploads/
+uploads/
 
 # Editor directories and files
 .vscode/*

@@ -52,7 +52,8 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "fresh-flowers",
     name: "Fresh Flower Bouquets",
     tagline: "Hand-tied this morning",
-    description: "Garden roses, tulips and lilies, wrapped by hand and delivered the same day they're picked.",
+    description:
+      "Garden roses, tulips and lilies, wrapped by hand and delivered the same day they're picked.",
     image: "fresh-roses",
     visible: true,
   },
@@ -60,7 +61,8 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "artificial-flowers",
     name: "Artificial Flower Bouquets",
     tagline: "Blooms that stay forever",
-    description: "Silk peonies and crochet florals that never wilt — a keepsake as lovely on day 300 as day one.",
+    description:
+      "Silk peonies and crochet florals that never wilt — a keepsake as lovely on day 300 as day one.",
     image: "artificial-peony",
     visible: true,
   },
@@ -68,7 +70,8 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "chocolate-bouquets",
     name: "Chocolate Bouquets",
     tagline: "Sweeter than roses",
-    description: "Truffles and bars arranged like a bouquet, finished in pastel paper and satin ribbon.",
+    description:
+      "Truffles and bars arranged like a bouquet, finished in pastel paper and satin ribbon.",
     image: "choco-ferrero",
     visible: true,
   },
@@ -76,7 +79,8 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "soft-toys",
     name: "Teddy Bears & Soft Toys",
     tagline: "Cuddles, delivered",
-    description: "Cloud-soft teddies and bunnies in dreamy pastels — the hug you can't give in person.",
+    description:
+      "Cloud-soft teddies and bunnies in dreamy pastels — the hug you can't give in person.",
     image: "teddy-lavender",
     visible: true,
   },
@@ -84,7 +88,8 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "customized-gifts",
     name: "Customized Gifts",
     tagline: "Made just for them",
-    description: "Mugs, frames and keepsakes printed with their name, your photo or a little private joke.",
+    description:
+      "Mugs, frames and keepsakes printed with their name, your photo or a little private joke.",
     image: "custom-mug",
     visible: true,
   },
@@ -92,13 +97,26 @@ export const SEED_CATEGORIES: Category[] = [
     slug: "gift-hampers",
     name: "Gift Hampers & Boxes",
     tagline: "A little box of joy",
-    description: "Curated boxes of treats, candles and cuddles — beautifully packed and ready to open.",
+    description:
+      "Curated boxes of treats, candles and cuddles — beautifully packed and ready to open.",
     image: "hamper-deluxe",
+    visible: true,
+  },
+  {
+    slug: "phone-case",
+    name: "Customized Phone Cases",
+    tagline: "A little piece of you",
+    description:
+      "Make your phone uniquely yours with personalized photo cases, custom designs and memories printed just for you.",
+    image: "phone-case",
     visible: true,
   },
 ];
 
-type Seed = Omit<Product, "id" | "slug" | "createdAt" | "active" | "images" | "sizes" | "personalizable" | "tags"> & {
+type Seed = Omit<
+  Product,
+  "id" | "slug" | "createdAt" | "active" | "images" | "sizes" | "personalizable" | "tags"
+> & {
   slug: string;
   images: ImageKey[];
   sizes?: ProductSize[];
@@ -123,8 +141,14 @@ const seeds: Seed[] = [
     rating: 4.9,
     reviews: 312,
     popularity: 98,
-    description: "Ten blush garden roses cloud-wrapped with baby's breath in lavender Korean paper and a cream satin bow.",
-    highlights: ["10 fresh garden roses", "Baby's breath filler", "Lavender Korean wrap", "Free care card"],
+    description:
+      "Ten blush garden roses cloud-wrapped with baby's breath in lavender Korean paper and a cream satin bow.",
+    highlights: [
+      "10 fresh garden roses",
+      "Baby's breath filler",
+      "Lavender Korean wrap",
+      "Free care card",
+    ],
     occasions: ["love", "anniversary", "birthday"],
     tags: ["bestseller"],
     stock: 24,
@@ -139,7 +163,8 @@ const seeds: Seed[] = [
     rating: 4.8,
     reviews: 186,
     popularity: 90,
-    description: "White and lilac tulips with silver-dollar eucalyptus, wrapped in soft tissue for a fresh, airy look.",
+    description:
+      "White and lilac tulips with silver-dollar eucalyptus, wrapped in soft tissue for a fresh, airy look.",
     highlights: ["12 tulips", "Fresh eucalyptus", "Tissue & lilac wrap"],
     occasions: ["thank-you", "congratulations", "just-because"],
     tags: ["new"],
@@ -169,7 +194,8 @@ const seeds: Seed[] = [
     rating: 4.6,
     reviews: 98,
     popularity: 70,
-    description: "Five lilac tulips in a mini bouquet, perfect for desks, bedside tables and sudden smiles.",
+    description:
+      "Five lilac tulips in a mini bouquet, perfect for desks, bedside tables and sudden smiles.",
     highlights: ["5 lilac tulips", "Mini wrap", "Same-day delivery"],
     occasions: ["birthday", "just-because"],
     stock: 6,
@@ -185,7 +211,8 @@ const seeds: Seed[] = [
     rating: 4.9,
     reviews: 204,
     popularity: 94,
-    description: "Lifelike silk peonies in blush and lavender with faux lavender sprigs. Never wilts, never fades.",
+    description:
+      "Lifelike silk peonies in blush and lavender with faux lavender sprigs. Never wilts, never fades.",
     highlights: ["9 silk peonies", "Faux lavender", "Satin wrap", "Lasts for years"],
     occasions: ["anniversary", "love", "birthday"],
     tags: ["bestseller"],
@@ -201,7 +228,8 @@ const seeds: Seed[] = [
     rating: 5.0,
     reviews: 158,
     popularity: 96,
-    description: "Hand-crocheted lavender tulips and white daisies, wrapped in kraft and lilac paper. Made stitch by stitch.",
+    description:
+      "Hand-crocheted lavender tulips and white daisies, wrapped in kraft and lilac paper. Made stitch by stitch.",
     highlights: ["Handmade crochet", "7 tulips + 6 daisies", "Kraft & lilac wrap"],
     occasions: ["love", "thank-you", "just-because"],
     tags: ["bestseller", "limited"],
@@ -216,7 +244,8 @@ const seeds: Seed[] = [
     rating: 4.7,
     reviews: 389,
     popularity: 88,
-    description: "One lavender crochet tulip in a cellophane sleeve — the tiniest, most lasting 'thinking of you'.",
+    description:
+      "One lavender crochet tulip in a cellophane sleeve — the tiniest, most lasting 'thinking of you'.",
     highlights: ["Handmade", "Gift sleeve", "Mini message tag"],
     occasions: ["just-because", "thank-you"],
     stock: 60,
@@ -247,7 +276,8 @@ const seeds: Seed[] = [
     rating: 4.9,
     reviews: 276,
     popularity: 97,
-    description: "Fourteen gold-foil hazelnut truffles nestled like blooms, wrapped in deep lavender and white.",
+    description:
+      "Fourteen gold-foil hazelnut truffles nestled like blooms, wrapped in deep lavender and white.",
     highlights: ["14 hazelnut truffles", "Dried filler flowers", "Lavender wrap"],
     occasions: ["birthday", "anniversary", "congratulations"],
     tags: ["bestseller"],
@@ -262,7 +292,8 @@ const seeds: Seed[] = [
     rating: 4.8,
     reviews: 143,
     popularity: 87,
-    description: "Milk chocolate and wafer bars with tiny paper roses, wrapped in blush pink for the sweet tooth.",
+    description:
+      "Milk chocolate and wafer bars with tiny paper roses, wrapped in blush pink for the sweet tooth.",
     highlights: ["20+ chocolate bars", "Paper rose accents", "Blush wrap"],
     occasions: ["birthday", "just-because"],
     stock: 14,
@@ -369,7 +400,8 @@ const seeds: Seed[] = [
     rating: 4.8,
     reviews: 187,
     popularity: 86,
-    description: "Glossy ceramic mug with a lavender heart and a name or word of your choice in handwritten script.",
+    description:
+      "Glossy ceramic mug with a lavender heart and a name or word of your choice in handwritten script.",
     highlights: ["325 ml ceramic", "Your text, printed", "Dishwasher safe"],
     occasions: ["birthday", "thank-you", "love"],
     stock: 35,
@@ -385,7 +417,8 @@ const seeds: Seed[] = [
     rating: 4.9,
     reviews: 132,
     popularity: 91,
-    description: "Wooden frame edged with pressed flowers and warm fairy lights, printed with your favourite photo.",
+    description:
+      "Wooden frame edged with pressed flowers and warm fairy lights, printed with your favourite photo.",
     highlights: ["5×7 photo print", "Warm LED lights", "Pressed florals"],
     occasions: ["anniversary", "love", "birthday"],
     tags: ["bestseller"],
@@ -417,7 +450,8 @@ const seeds: Seed[] = [
     rating: 4.7,
     reviews: 89,
     popularity: 72,
-    description: "Your photo plus a date that matters, printed under glass with a pressed-flower border.",
+    description:
+      "Your photo plus a date that matters, printed under glass with a pressed-flower border.",
     highlights: ["Custom date & names", "Glass front", "Table stand"],
     occasions: ["anniversary", "love"],
     stock: 8,
@@ -434,7 +468,8 @@ const seeds: Seed[] = [
     rating: 4.9,
     reviews: 221,
     popularity: 93,
-    description: "A lilac box of truffles, a soy candle, a mini teddy, dried flowers and a handwritten note.",
+    description:
+      "A lilac box of truffles, a soy candle, a mini teddy, dried flowers and a handwritten note.",
     highlights: ["6 truffles", "Soy candle", "Mini teddy", "Dried posy"],
     occasions: ["birthday", "anniversary", "thank-you"],
     tags: ["bestseller"],
@@ -478,10 +513,59 @@ const seeds: Seed[] = [
     rating: 4.5,
     reviews: 92,
     popularity: 64,
-    description: "A palm-sized box of chocolates and one macaron — proof that small gifts land big.",
+    description:
+      "A palm-sized box of chocolates and one macaron — proof that small gifts land big.",
     highlights: ["4 chocolates", "1 macaron", "Mini card"],
     occasions: ["thank-you", "birthday"],
     stock: 2,
+  },
+  {
+    slug: "custom-chocolate-bouquet",
+    name: "Custom Chocolate Bouquet",
+    category: "chocolate-bouquets",
+    price: 399,
+    compareAt: 449,
+    images: ["custom-chocolate", "choco-bars"],
+    rating: 4.8,
+    reviews: 24,
+    popularity: 70,
+    description:
+      "Silk, wafer and dark chocolate bars fanned out with baby's breath, wrapped in lilac paper with a satin bow and a tag carrying their name.",
+    highlights: [
+      "9 assorted chocolate bars",
+      "Baby's breath filler",
+      "Lilac wrap & satin bow",
+      "Personalised name tag",
+    ],
+    occasions: ["birthday", "love"],
+    stock: 20,
+    personalizable: true,
+    sizes: STANDARD_SIZES,
+    tags: ["new"],
+  },
+  // Phone cases
+  {
+    slug: "custom-photo-phone-case",
+    name: "Custom Photo Phone Case",
+    category: "phone-case",
+    price: 349,
+    compareAt: 449,
+    images: ["phone-case"],
+    rating: 4.7,
+    reviews: 18,
+    popularity: 66,
+    description:
+      "A crystal-clear case printed with your favourite photo and their name in handwritten script. We'll message you for the photo and phone model after you order.",
+    highlights: [
+      "Your photo, printed edge to edge",
+      "Name in handwritten script",
+      "Shock-absorbing clear edges",
+      "Fits most popular models",
+    ],
+    occasions: ["birthday", "love", "just-because"],
+    stock: 30,
+    personalizable: true,
+    tags: ["new"],
   },
 ];
 
@@ -528,7 +612,16 @@ export interface Order {
   cardMessage: string;
   paymentMethod: string;
   lines: OrderLine[];
-  totals: { subtotal: number; discount: number; delivery: number; wrap: number; slotFee: number; total: number };
+  totals: {
+    subtotal: number;
+    discount: number;
+    delivery: number;
+    wrap: number;
+    slotFee: number;
+    /** Present on server-backed orders; legacy seed orders omit it. */
+    tax?: number;
+    total: number;
+  };
 }
 
 const seedCustomers = [
@@ -544,14 +637,24 @@ const seedCustomers = [
   ["Vikram Singh", "Chandigarh"],
 ] as const;
 
-const statusCycle: OrderStatus[] = ["delivered", "delivered", "out-for-delivery", "preparing", "placed", "delivered", "cancelled", "delivered"];
+const statusCycle: OrderStatus[] = [
+  "delivered",
+  "delivered",
+  "out-for-delivery",
+  "preparing",
+  "placed",
+  "delivered",
+  "cancelled",
+  "delivered",
+];
 
 export const SEED_ORDERS: Order[] = Array.from({ length: 16 }, (_, i) => {
   const [name, city] = seedCustomers[i % seedCustomers.length]!;
   const p1 = SEED_PRODUCTS[(i * 5) % SEED_PRODUCTS.length]!;
   const p2 = SEED_PRODUCTS[(i * 7 + 3) % SEED_PRODUCTS.length]!;
   const lines: OrderLine[] = [{ name: p1.name, qty: 1, unitPrice: p1.price, image: p1.images[0]! }];
-  if (i % 3 !== 0) lines.push({ name: p2.name, qty: 1 + (i % 2), unitPrice: p2.price, image: p2.images[0]! });
+  if (i % 3 !== 0)
+    lines.push({ name: p2.name, qty: 1 + (i % 2), unitPrice: p2.price, image: p2.images[0]! });
   const subtotal = lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
   const delivery = subtotal >= 499 ? 0 : 49;
   const wrap = i % 4 === 0 ? 29 : 0;
@@ -567,13 +670,29 @@ export const SEED_ORDERS: Order[] = Array.from({ length: 16 }, (_, i) => {
       email: name.toLowerCase().replace(/[^a-z]+/g, ".") + "@example.com",
       phone: `98${String(45678901 + i * 1311).slice(0, 8)}`,
     },
-    recipient: { name, phone: `97${String(12345678 + i * 977).slice(0, 8)}`, address: `${12 + i}, Lavender Lane`, city, pincode: `${560001 + i}` },
-    delivery: { date: deliveryDate.toISOString().slice(0, 10), slotId: ["morning", "evening", "afternoon", "midnight"][i % 4]! },
+    recipient: {
+      name,
+      phone: `97${String(12345678 + i * 977).slice(0, 8)}`,
+      address: `${12 + i}, Lavender Lane`,
+      city,
+      pincode: `${560001 + i}`,
+    },
+    delivery: {
+      date: deliveryDate.toISOString().slice(0, 10),
+      slotId: ["morning", "evening", "afternoon", "midnight"][i % 4]!,
+    },
     giftWrapId: wrap ? "satin" : "classic",
     cardMessage: "Happy to have you in my life 💜",
     paymentMethod: ["UPI", "Card", "Cash on delivery"][i % 3]!,
     lines,
-    totals: { subtotal, discount: 0, delivery, wrap, slotFee: i % 4 === 3 ? 79 : 0, total: subtotal + delivery + wrap + (i % 4 === 3 ? 79 : 0) },
+    totals: {
+      subtotal,
+      discount: 0,
+      delivery,
+      wrap,
+      slotFee: i % 4 === 3 ? 79 : 0,
+      total: subtotal + delivery + wrap + (i % 4 === 3 ? 79 : 0),
+    },
   };
 });
 
@@ -611,26 +730,56 @@ export const FAQS = [
   {
     group: "Orders & delivery",
     items: [
-      { q: "Do you offer same-day delivery?", a: "Yes — orders placed before 2 PM can be delivered the same day in most cities. Fresh flowers are always hand-tied on the day of delivery." },
-      { q: "What is the midnight surprise slot?", a: "We'll deliver between 11:30 PM and midnight so your gift arrives right as the special day begins. It carries a small ₹79 fee." },
-      { q: "How much does delivery cost?", a: "Delivery is ₹49, and free on every order of ₹499 or more." },
-      { q: "Can I choose a delivery date in advance?", a: "Absolutely. Pick any date up to 30 days ahead at checkout along with your preferred time window." },
+      {
+        q: "Do you offer same-day delivery?",
+        a: "Yes — orders placed before 2 PM can be delivered the same day in most cities. Fresh flowers are always hand-tied on the day of delivery.",
+      },
+      {
+        q: "What is the midnight surprise slot?",
+        a: "We'll deliver between 11:30 PM and midnight so your gift arrives right as the special day begins. It carries a small ₹79 fee.",
+      },
+      {
+        q: "How much does delivery cost?",
+        a: "Delivery is ₹49, and free on every order of ₹499 or more.",
+      },
+      {
+        q: "Can I choose a delivery date in advance?",
+        a: "Absolutely. Pick any date up to 30 days ahead at checkout along with your preferred time window.",
+      },
     ],
   },
   {
     group: "Gifts & personalisation",
     items: [
-      { q: "Can I add a handwritten greeting card?", a: "Every order includes a free greeting card. Type your message in the cart and our team writes it by hand." },
-      { q: "How do personalised gifts work?", a: "On personalised products you'll see a text field — enter the name or message you'd like printed. We'll match it to the design shown." },
-      { q: "What's in Build Your Own Gift Box?", a: "Pick a box size, then fill it with treats, plushies, blooms and keepsakes. The price updates as you go." },
+      {
+        q: "Can I add a handwritten greeting card?",
+        a: "Every order includes a free greeting card. Type your message in the cart and our team writes it by hand.",
+      },
+      {
+        q: "How do personalised gifts work?",
+        a: "On personalised products you'll see a text field — enter the name or message you'd like printed. We'll match it to the design shown.",
+      },
+      {
+        q: "What's in Build Your Own Gift Box?",
+        a: "Pick a box size, then fill it with treats, plushies, blooms and keepsakes. The price updates as you go.",
+      },
     ],
   },
   {
     group: "Payments & returns",
     items: [
-      { q: "Which payment methods do you accept?", a: "This store is a demonstration, so no real payment is taken. The checkout shows UPI, card and cash on delivery to illustrate the flow." },
-      { q: "What if my flowers arrive damaged?", a: "Send us a photo within 24 hours and we'll replace the bouquet or refund you — no questions asked." },
-      { q: "Do you have discount codes?", a: "Try HEAVEN10 for 10% off orders above ₹299, or FIRSTGIFT for ₹50 off orders above ₹399." },
+      {
+        q: "Which payment methods do you accept?",
+        a: "We accept UPI, cards and wallets through Razorpay or Cashfree, plus cash on delivery where available. Card details are collected by the payment provider, never by this store.",
+      },
+      {
+        q: "What if my flowers arrive damaged?",
+        a: "Send us a photo within 24 hours and we'll replace the bouquet or refund you — no questions asked.",
+      },
+      {
+        q: "Do you have discount codes?",
+        a: "Active offers are shown in the announcement bar. Enter a code in your cart and the server confirms the exact discount before you pay.",
+      },
     ],
   },
 ];

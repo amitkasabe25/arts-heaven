@@ -13,6 +13,8 @@ import customMug from "@/assets/products/custom-mug.jpg";
 import customFrame from "@/assets/products/custom-frame.jpg";
 import hamperDeluxe from "@/assets/products/hamper-deluxe.jpg";
 import hamperMini from "@/assets/products/hamper-mini.jpg";
+import phoneCase from "@/assets/products/phone-case.png";
+import customChocolate from "@/assets/products/custom-chocolate.png";
 
 export const SITE_IMAGES = { hero, aboutStudio, buildBox };
 
@@ -30,6 +32,8 @@ export const PRODUCT_IMAGES = {
   "custom-frame": customFrame,
   "hamper-deluxe": hamperDeluxe,
   "hamper-mini": hamperMini,
+  "phone-case": phoneCase,
+  "custom-chocolate": customChocolate,
 } as const;
 
 export type ImageKey = keyof typeof PRODUCT_IMAGES;

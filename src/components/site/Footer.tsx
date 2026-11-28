@@ -15,10 +15,11 @@ export function Footer() {
         <div>
           <p className="font-display text-3xl italic">Artsheaven</p>
           <p className="mt-4 max-w-xs text-sm text-plum-foreground/70">
-            Dreamy flowers, sweet chocolates and cuddly keepsakes — wrapped in lavender and delivered with love.
+            Dreamy flowers, sweet chocolates and cuddly keepsakes — wrapped in lavender and
+            delivered with love.
           </p>
           <p className="mt-6 text-xs text-plum-foreground/50">
-            This is a demonstration store. No real orders or payments are processed.
+            Secure checkout · Thoughtful packaging · Delivered with care
           </p>
         </div>
         <div>
@@ -34,23 +35,47 @@ export function Footer() {
                 </li>
               ))}
             <li>
-              <Link to="/build-a-box" className="hover:text-lilac">Build your own box</Link>
+              <Link to="/build-a-box" className="hover:text-lilac">
+                Build your own box
+              </Link>
             </li>
           </ul>
         </div>
         <div>
           <p className="eyebrow text-lilac">Help</p>
           <ul className="mt-4 space-y-2.5 text-sm text-plum-foreground/80">
-            <li><Link to="/about" className="hover:text-lilac">Our story</Link></li>
-            <li><Link to="/faq" className="hover:text-lilac">FAQ</Link></li>
-            <li><Link to="/contact" className="hover:text-lilac">Contact us</Link></li>
-            <li><Link to="/account" className="hover:text-lilac">My account</Link></li>
-            <li><Link to="/admin" className="hover:text-lilac">Store admin</Link></li>
+            <li>
+              <Link to="/about" className="hover:text-lilac">
+                Our story
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq" className="hover:text-lilac">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-lilac">
+                Contact us
+              </Link>
+            </li>
+            <li>
+              <Link to="/account" className="hover:text-lilac">
+                My account
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin" className="hover:text-lilac">
+                Store admin
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
           <p className="eyebrow text-lilac">Love letters</p>
-          <p className="mt-4 text-sm text-plum-foreground/80">Occasion reminders and first dibs on new drops. No spam, only petals.</p>
+          <p className="mt-4 text-sm text-plum-foreground/80">
+            Occasion reminders and first dibs on new drops. No spam, only petals.
+          </p>
           <form
             className="mt-4 flex gap-2"
             onSubmit={(e) => {
@@ -61,7 +86,9 @@ export function Footer() {
               }
               setPrefs({ newsletter: true });
               setEmail("");
-              toast.success("You're on the list 💜", { description: "Watch your inbox for something sweet." });
+              toast.success("You're on the list 💜", {
+                description: "Watch your inbox for something sweet.",
+              });
             }}
           >
             <input
@@ -72,7 +99,9 @@ export function Footer() {
               aria-label="Email address"
               className="h-11 flex-1 rounded-full border border-plum-foreground/20 bg-plum-foreground/10 px-4 text-sm text-plum-foreground placeholder:text-plum-foreground/50 outline-none focus:border-lilac"
             />
-            <Button type="submit" variant="hero" className="h-11">Join</Button>
+            <Button type="submit" variant="hero" className="h-11">
+              Join
+            </Button>
           </form>
         </div>
       </div>

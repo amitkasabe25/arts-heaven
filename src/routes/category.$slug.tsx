@@ -57,16 +57,32 @@ function CategoryPage() {
     <>
       <section className="bg-dream border-b border-border">
         <div className="container-page grid items-center gap-10 py-12 md:grid-cols-[1.2fr_1fr] md:py-16">
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <nav className="mb-6 text-xs text-muted-foreground">
-              <Link to="/" className="hover:text-primary">Home</Link> / <Link to="/shop" className="hover:text-primary">Shop</Link> / <span className="text-foreground">{category.name}</span>
+              <Link to="/" className="hover:text-primary">
+                Home
+              </Link>{" "}
+              /{" "}
+              <Link to="/shop" className="hover:text-primary">
+                Shop
+              </Link>{" "}
+              / <span className="text-foreground">{category.name}</span>
             </nav>
             <p className="eyebrow mb-4">{category.tagline}</p>
             <h1 className="text-4xl leading-[1.05] text-plum md:text-6xl">{category.name}</h1>
             <p className="mt-5 max-w-lg text-lg text-muted-foreground">{category.description}</p>
             <div className="mt-8 flex flex-wrap gap-2">
               {others.map((c) => (
-                <Link key={c.slug} to="/category/$slug" params={{ slug: c.slug }} className="rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary">
+                <Link
+                  key={c.slug}
+                  to="/category/$slug"
+                  params={{ slug: c.slug }}
+                  className="rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium hover:border-primary"
+                >
                   {c.name}
                 </Link>
               ))}
