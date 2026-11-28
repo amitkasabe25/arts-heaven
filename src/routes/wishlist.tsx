@@ -13,7 +13,10 @@ export const Route = createFileRoute("/wishlist")({
   head: () => ({
     meta: [
       { title: "My Wishlist — Artsheaven" },
-      { name: "description", content: "The bouquets, teddies and hampers you've saved for later at Artsheaven." },
+      {
+        name: "description",
+        content: "The bouquets, teddies and hampers you've saved for later at Artsheaven.",
+      },
       { property: "og:title", content: "My Wishlist — Artsheaven" },
       { property: "og:description", content: "Gifts saved for the perfect moment." },
       { property: "og:type", content: "website" },
@@ -25,19 +28,32 @@ export const Route = createFileRoute("/wishlist")({
 
 function WishlistPage() {
   const { wishlist, products, toggleWishlist, addToCart, hydrated } = useStore();
-  const items = wishlist.map((id) => products.find((p) => p.id === id)).filter((p) => p !== undefined);
+  const items = wishlist
+    .map((id) => products.find((p) => p.id === id))
+    .filter((p) => p !== undefined);
 
   const moveAll = () => {
     const simple = items.filter((p) => !p.personalizable && p.sizes.length === 0 && p.stock > 0);
     simple.forEach((p) => addToCart(p));
     toast.success(`${simple.length} gift${simple.length === 1 ? "" : "s"} added to cart`, {
-      description: simple.length < items.length ? "Gifts with options need to be added from their page." : undefined,
+      description:
+        simple.length < items.length
+          ? "Gifts with options need to be added from their page."
+          : undefined,
     });
   };
 
   return (
     <>
-      <PageHeader eyebrow="Saved with love" title={<>Your <em>wishlist</em></>} intro="Keep an eye on the gifts you adore — they're saved on this device." />
+      <PageHeader
+        eyebrow="Saved with love"
+        title={
+          <>
+            Your <em>wishlist</em>
+          </>
+        }
+        intro="Keep an eye on the gifts you adore — they're saved on this device."
+      />
       <div className="container-page py-12">
         {!hydrated ? null : items.length === 0 ? (
           <EmptyState
@@ -62,13 +78,24 @@ function WishlistPage() {
               {items.map((p) => {
                 const needsOptions = p.personalizable || p.sizes.length > 0;
                 return (
-                  <div key={p.id} className="flex gap-5 rounded-3xl border border-border bg-card p-4">
+                  <div
+                    key={p.id}
+                    className="flex gap-5 rounded-3xl border border-border bg-card p-4"
+                  >
                     <Link to="/product/$slug" params={{ slug: p.slug }} className="shrink-0">
-                      <img src={resolveImage(p.images[0] ?? "")} alt={p.name} className="size-28 rounded-2xl object-cover" />
+                      <img
+                        src={resolveImage(p.images[0] ?? "")}
+                        alt={p.name}
+                        className="size-28 rounded-2xl object-cover"
+                      />
                     </Link>
                     <div className="flex flex-1 flex-col">
                       <div className="flex justify-between gap-3">
-                        <Link to="/product/$slug" params={{ slug: p.slug }} className="font-display text-lg text-plum hover:text-primary">
+                        <Link
+                          to="/product/$slug"
+                          params={{ slug: p.slug }}
+                          className="font-display text-lg text-plum hover:text-primary"
+                        >
                           {p.name}
                         </Link>
                         <button
@@ -83,11 +110,15 @@ function WishlistPage() {
                         </button>
                       </div>
                       <p className="mt-1 font-semibold">{formatINR(p.price)}</p>
-                      <p className="text-xs text-muted-foreground">{p.stock > 0 ? "In stock" : "Sold out"}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {p.stock > 0 ? "In stock" : "Sold out"}
+                      </p>
                       <div className="mt-auto pt-3">
                         {needsOptions ? (
                           <Button asChild size="sm" variant="outline">
-                            <Link to="/product/$slug" params={{ slug: p.slug }}>Choose options</Link>
+                            <Link to="/product/$slug" params={{ slug: p.slug }}>
+                              Choose options
+                            </Link>
                           </Button>
                         ) : (
                           <Button

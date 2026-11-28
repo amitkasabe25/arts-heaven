@@ -45,7 +45,9 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           aria-label={wished ? "Remove from wishlist" : "Add to wishlist"}
           onClick={() => {
             const added = toggleWishlist(product.id);
-            toast(added ? "Saved to your wishlist" : "Removed from wishlist", { description: product.name });
+            toast(added ? "Saved to your wishlist" : "Removed from wishlist", {
+              description: product.name,
+            });
           }}
           className="absolute right-3 top-3 grid size-10 place-items-center rounded-full bg-card/90 text-primary shadow-soft backdrop-blur transition hover:scale-110"
         >
@@ -78,13 +80,25 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       </div>
       <div className="mt-4 flex flex-1 flex-col px-1">
         <Rating value={product.rating} reviews={product.reviews} />
-        <Link to="/product/$slug" params={{ slug: product.slug }} className="mt-1.5 font-display text-lg leading-snug text-plum hover:text-primary">
+        <Link
+          to="/product/$slug"
+          params={{ slug: product.slug }}
+          className="mt-1.5 font-display text-lg leading-snug text-plum hover:text-primary"
+        >
           {product.name}
         </Link>
         <div className="mt-1 flex items-baseline gap-2">
           <span className="font-semibold text-foreground">{formatINR(product.price)}</span>
-          {product.compareAt && <span className="text-sm text-muted-foreground line-through">{formatINR(product.compareAt)}</span>}
-          {product.stock > 0 && product.stock <= 5 && <span className="ml-auto text-xs font-medium text-accent-foreground">Only {product.stock} left</span>}
+          {product.compareAt && (
+            <span className="text-sm text-muted-foreground line-through">
+              {formatINR(product.compareAt)}
+            </span>
+          )}
+          {product.stock > 0 && product.stock <= 5 && (
+            <span className="ml-auto text-xs font-medium text-accent-foreground">
+              Only {product.stock} left
+            </span>
+          )}
         </div>
       </div>
     </motion.article>

@@ -1,0 +1,134 @@
+# Local development stack for the Artsheaven platform.
+#
+#   docker compose -f infrastructure/docker-compose.yml up -d --build
+#
+# Every credential below matches apps/api/.env.example and is for LOCAL USE ONLY.
+# Override via your shell or a root .env file; never commit real secrets.
+# The API image is built from ../apps/api/Dockerfile with the repository root as
+# the build context (see the `build` block below).
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: artsheaven-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: artsheaven
+      POSTGRES_USER: artsheaven
+      POSTGRES_PASSWORD: artsheaven
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U artsheaven -d artsheaven"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: artsheaven-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+
+  # Mailpit exposes its web UI on 8025 and accepts SMTP internally on 1025
+  # (http://localhost:8025 shows every message the API sends).
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: artsheaven-mailpit
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    ports:
+      - "8025:8025"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:8025/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+
+  api:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    container_name: artsheaven-api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    ports:
+      - "4000:4000"
+    volumes:
+      - uploads_data:/app/uploads
+    environment:
+      NODE_ENV: development
+      API_PORT: 4000
+      API_PREFIX: api/v1
+      APP_URL: http://localhost:5173,http://localhost:8080
+      API_URL: http://localhost:4000/api/v1
+
+      # Container hostnames replace `localhost` from apps/api/.env.example.
+      DATABASE_URL: postgresql://artsheaven:artsheaven@db:5432/artsheaven?schema=public
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ""
+      REDIS_DB: 0
+
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-replace-with-a-long-random-access-secret}
+      JWT_ACCESS_TTL: 15m
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-replace-with-a-different-long-random-refresh-secret}
+      JWT_REFRESH_TTL: 7d
+      JWT_EMAIL_VERIFY_SECRET: ${JWT_EMAIL_VERIFY_SECRET:-replace-with-email-verify-secret}
+      JWT_PASSWORD_RESET_SECRET: ${JWT_PASSWORD_RESET_SECRET:-replace-with-password-reset-secret}
+      BCRYPT_ROUNDS: 12
+
+      AWS_REGION: ap-south-1
+      AWS_ACCESS_KEY_ID: ""
+      AWS_SECRET_ACCESS_KEY: ""
+      AWS_S3_BUCKET: artsheaven-dev
+      AWS_S3_PUBLIC_BASE_URL: ""
+
+      # No cloud credentials in local dev: store uploads on disk and serve /uploads.
+      UPLOAD_DRIVER: local
+      UPLOAD_LOCAL_DIR: /app/uploads
+      UPLOAD_PUBLIC_BASE_URL: http://localhost:4000
+
+      PAYMENT_DEFAULT_PROVIDER: razorpay
+      RAZORPAY_KEY_ID: ""
+      RAZORPAY_KEY_SECRET: ""
+      RAZORPAY_WEBHOOK_SECRET: ""
+      CASHFREE_CLIENT_ID: ""
+      CASHFREE_CLIENT_SECRET: ""
+      CASHFREE_API_VERSION: 2023-12-12
+      CASHFREE_ENVIRONMENT: TEST
+      PAYMENT_WEBHOOK_URL: http://localhost:4000/api/v1/webhooks
+
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_USER: ""
+      SMTP_PASS: ""
+      MAIL_FROM: "Artsheaven <no-reply@artsheaven.local>"
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads_data:

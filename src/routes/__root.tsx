@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { useQueryInvalidationSync } from "@/lib/query-invalidation";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Toaster } from "@/components/ui/sonner";
@@ -86,10 +87,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Artsheaven — Flowers, Chocolates & Dreamy Gifts" },
-      { name: "description", content: "Lavender-wrapped bouquets, chocolate bouquets, teddies and gift hampers from ₹99 to ₹499." },
+      {
+        name: "description",
+        content:
+          "Lavender-wrapped bouquets, chocolate bouquets, teddies and gift hampers from ₹99 to ₹499.",
+      },
       { name: "author", content: "Artsheaven" },
       { property: "og:title", content: "Artsheaven — Flowers, Chocolates & Dreamy Gifts" },
-      { property: "og:description", content: "Lavender-wrapped bouquets, chocolate bouquets, teddies and gift hampers from ₹99 to ₹499." },
+      {
+        property: "og:description",
+        content:
+          "Lavender-wrapped bouquets, chocolate bouquets, teddies and gift hampers from ₹99 to ₹499.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -129,6 +138,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useQueryInvalidationSync(queryClient);
 
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
